@@ -30,10 +30,6 @@ proto.getSource = function() {
   return this.getOLLayer().getSource();
 };
 
-proto.getInfoFormat = function() {
-  return 'application/vnd.ogc.gml';
-};
-
 proto.getGetFeatureInfoUrl = function(coordinate,resolution,epsg,params) {
   return this.getOLLayer().getSource().getGetFeatureInfoUrl(coordinate,resolution,epsg,params);
 };

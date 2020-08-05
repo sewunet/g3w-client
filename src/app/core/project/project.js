@@ -31,6 +31,9 @@ function Project(config={}, options={}) {
   config.catalog_tab = config._catalog_tab || 'layers'; // values : layers, baselayers, legend
   config.ows_method = config.ows_method || 'GET';
   this.state = config;
+  // set info format if layer has no info format setted
+  const [major, minor] = this.getQgisVersion().split('.');
+  this.infoformat = (major > 3 || (major == 3 && minor >= 10)) && 'application/json' || 'application/vnd.ogc.gml';
   // process layers
   this._processLayers();
   // set the project projection
@@ -157,6 +160,7 @@ proto._buildLayersStore = function() {
     layerConfig.ows_method = this.getOwsMethod();
     layerConfig.wms_use_layer_ids = this.state.wms_use_layer_ids;
     const layer = LayerFactory.build(layerConfig, {
+      infoformat: this.infoformat,
       project: this
     });
     layersStore.addLayer(layer);
@@ -241,7 +245,7 @@ proto.getWmsUrl = function() {
 };
 
 proto.getInfoFormat = function() {
-  return 'application/vnd.ogc.gml';
+  return this.infoformat;
 };
 
 proto.getLayersStore = function() {

@@ -20,17 +20,12 @@ inherit(WMSLayer, MapLayer);
 const proto = WMSLayer.prototype;
 
 proto.getOLLayer = function(withLayers) {
-  if (!this._olLayer)
-    this._olLayer = this._makeOlLayer(withLayers);
+  this._olLayer = this._olLayer || this._makeOlLayer(withLayers);
   return this._olLayer;
 };
 
 proto.getSource = function() {
   return this.getOLLayer().getSource();
-};
-
-proto.getInfoFormat = function() {
-  return 'application/vnd.ogc.gml';
 };
 
 proto.getGetFeatureInfoUrl = function(coordinate,resolution,epsg,params) {

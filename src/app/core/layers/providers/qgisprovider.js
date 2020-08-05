@@ -28,7 +28,7 @@ function QGISProvider(options = {}) {
   this._widgetUrls = this._layer.getUrl('widget');
   // layer name
   this._layerName = this._layer.getName() || null; // get name  from QGIS layer, because the query are proxed from g3w-server
-  this._infoFormat = this._layer.getInfoFormat() || 'application/vnd.ogc.gml';
+  this._infoFormat = this._layer.getInfoFormat();
 }
 
 inherit(QGISProvider, DataProvider);

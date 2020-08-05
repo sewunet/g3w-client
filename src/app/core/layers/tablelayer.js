@@ -121,7 +121,6 @@ function TableLayer(config={}, options={}) {
         ready: false
       }
     }, this.state);
-
   }
   this._featuresstore = new FeaturesStore({
     provider: this.providers.data

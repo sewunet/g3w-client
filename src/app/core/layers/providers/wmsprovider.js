@@ -17,7 +17,7 @@ function WMSDataProvider(options = {}) {
     map: null,
     layer: null
   };
-  this._infoFormat = this._layer.getInfoFormat() || 'application/vnd.ogc.gml';
+  this._infoFormat = this._layer.getInfoFormat();
 }
 
 inherit(WMSDataProvider, DataProvider);

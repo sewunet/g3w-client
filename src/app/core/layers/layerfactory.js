@@ -7,7 +7,7 @@ const GeojsonLayer = require('./geojson');
 
 // Class to build layer based on configuration
 function LayerFactory() {
-  this.build = function(config, options) {
+  this.build = function(config={}, options={}) {
     // return the layer instance
     const layerClass = this.get(config);
     return layerClass ? new layerClass(config, options) : null

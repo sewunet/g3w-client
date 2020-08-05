@@ -54,6 +54,7 @@ proto.getName = function() {
   return this._name;
 };
 
+
 // to extract gml from multiple (Tuscany region)
 proto.extractGML = function (response) {
   if (response.substr(0,2) !== '--')
@@ -78,10 +79,12 @@ proto.handleQueryResponseFromServer = function(response, projections, layers, wm
   const infoFormat = layer.getInfoFormat();
   switch(infoFormat) {
     case 'json':
+    case 'application/json':
       return this._parseGeoJsonResponse({
         layer,
         response,
-        projections
+        projections,
+        infoFormat
       });
       break;
     default:
@@ -124,9 +127,20 @@ proto.handleQueryResponseFromServer = function(response, projections, layers, wm
   }
 };
 
-proto._parseGeoJsonResponse = function({layer, response, projections}={}) {
-  const data = response.vector && response.vector.data;
-  const features = data && this._parseLayerGeoJSON(data, projections) || [];
+proto._parseGeoJsonResponse = function({layer, response, projections, infoFormat}={}) {
+  const data = infoFormat === 'json' ? response.vector && response.vector.data: response;
+  let features = data && this._parseLayerGeoJSON(data, projections) || [];
+  const layerFields = layer.getFields();
+  features = infoFormat === 'application/json' && features.forEach(feature => {
+    const properties = feature.getProperties();
+    Object.entries(properties).forEach(([property, value]) => {
+      if (property === 'id') feature.set('g3w_fid', feature.getId());
+      else if (!geometryFields.find(geometryField => geometryField === property)) {
+        const field = layerFields.find(field => field.label === property || field.name === property);
+        (field.name !== property) && feature.set(field.name, value);
+      }
+    });
+  }) || features;
   return [{
     layer,
     features

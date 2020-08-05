@@ -46,7 +46,7 @@ function Layer(config={}, options={}) {
       J: 0
     };
   }
-
+  const {infoformat:defaultInfoFormat} = options;
   // dinamic layer values
   this.state = {
     id: config.id,
@@ -58,11 +58,10 @@ function Layer(config={}, options={}) {
     openattributetable: this.canShowTable(),
     removable: config.removable || false,
     source: config.source,
-    infoformat: this.getInfoFormat(),
+    infoformat: defaultInfoFormat,
     geolayer: false,
     visible: config.visible || false
   };
-
 
   // refferred to (layersstore);
   this._layersstore = config.layersstore || null;
@@ -476,7 +475,7 @@ proto.getQueryLayerOrigName = function() {
 };
 
 proto.getInfoFormat = function(ogcService) {
-  return (this.config.infoformat && this.config.infoformat !== '' && ogcService !== 'wfs') ?  this.config.infoformat : 'application/vnd.ogc.gml';
+  return (this.config.infoformat && this.config.infoformat !== '' && ogcService !== 'wfs') ?  this.config.infoformat : this.state.infoformat;
 };
 
 proto.getInfoUrl = function() {
