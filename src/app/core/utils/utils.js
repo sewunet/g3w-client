@@ -321,9 +321,7 @@ const utils = {
         link.setAttribute("href", url);
         link.setAttribute("download", exportedFilenmae);
         link.style.visibility = 'hidden';
-        document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);
       }
     }
   },
@@ -394,18 +392,16 @@ const utils = {
       return string;
     },
     
-    fileDownload({url, data, httpMethod="POST"} = {}) {
+    fileDownload({url, data={}, httpMethod="POST"} = {}) {
       return new Promise((resolve, reject) => {
         $.fileDownload(url, {
           httpMethod,
           data,
-          successCallback() {
-            resolve()
-          },
-          failCallback() {
-            reject()
-          }
-        });
+        }).done(()=>{
+          resolve()
+        }).fail(()=>{
+          reject()
+        })
       })
     }
   }

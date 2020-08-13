@@ -23,12 +23,14 @@
   .skin-color {
     color: @purple !important;
   }
-  .skin-tooltip-top + .tooltip.top, .skin-tooltip-left + .tooltip.left, .skin-tooltip-right + .tooltip.right  {
+  .skin-color-dark {
+    color: darken(@purple,20%) !important;
+  }
+  .skin-tooltip-top + .tooltip.top, .skin-tooltip-left + .tooltip.left, .skin-tooltip-right + .tooltip.right, .skin-tooltip-bottom + .tooltip.bottom  {
     .tooltip-inner {
       background-color: @purple !important;
       font-weight: bold;
     }
-
   }
   .skin-tooltip-top + .tooltip.top {
     .tooltip-arrow {
@@ -44,6 +46,12 @@
   .skin-tooltip-right + .tooltip.right {
     .tooltip-arrow {
       border-right-color: @purple !important;
+    }
+  }
+
+  .skin-tooltip-bottom + .tooltip.bottom {
+    .tooltip-arrow {
+      border-bottom-color: @purple !important;
     }
   }
 }

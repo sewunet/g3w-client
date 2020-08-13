@@ -23,8 +23,11 @@
   .skin-color {
     color: @green !important;
   }
+  .skin-color-dark {
+    color: darken(@green,20%) !important;
+  }
 
-  .skin-tooltip-top + .tooltip.top, .skin-tooltip-left + .tooltip.left, .skin-tooltip-right + .tooltip.right  {
+  .skin-tooltip-top + .tooltip.top, .skin-tooltip-left + .tooltip.left, .skin-tooltip-right + .tooltip.right, .skin-tooltip-bottom + .tooltip.bottom  {
     .tooltip-inner {
       background-color:@green !important;
       font-weight: bold;
@@ -43,6 +46,12 @@
   .skin-tooltip-right + .tooltip.right {
     .tooltip-arrow {
       border-right-color: @green !important;
+    }
+  }
+
+  .skin-tooltip-bottom + .tooltip.bottom {
+    .tooltip-arrow {
+      border-bottom-color: @green !important;
     }
   }
 }

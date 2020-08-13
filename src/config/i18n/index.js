@@ -13,6 +13,12 @@ const translations = {
           rotation: "Rotazione"
         },
         querybuilder: {
+          search: {
+            run: "Lancia ricerca",
+            info: "Informazioni",
+            delete: "Cancella",
+            edit: "Modifica"
+          },
           messages: {
             changed: 'Salvato correttamente'
           },
@@ -109,33 +115,53 @@ const translations = {
           },
           zoom_to_features_extent: "Zoom sulle features",
           copy_map_extent_url: 'Copia map view link',
+          download_shapefile: "Scarica Shapefile",
+          download_gpx: "Scarica GPX",
+          download_csv: "Scarica CSV",
           download_xls: "Scarica XLS",
-          download_csv: "Scarica CSV"
         },
         mapcontrols: {
           query: {
             tooltip: 'Interroga Layer',
             actions: {
-              show_map: {
-                hint: "Visualizza sulla mappa"
+              zoom_to_features_extent:{
+                hint: "Zoom sulle features"
+              },
+              zoom_to_feature: {
+                hint: "Zoom sulla feature"
               },
               relations: {
                 hint: "Visualizza Relazioni"
               },
-              download_shapefile: {
-                hint: 'Scarica Shapefile'
+              download_features_shapefile:{
+                hint: 'Scarica features in Shapefile'
               },
-              download_xls: {
-                hint: "Scarica XLS"
+              download_shapefile: {
+                hint: 'Scarica feature in Shapefile'
+              },
+              download_features_gpx: {
+                hint: "Scarica features in GPX"
               },
               download_gpx: {
-                hint: "Scarica GPX"
+                hint: "Scarica feature in GPX"
+              },
+              download_features_csv: {
+                hint: "Scarica features in CSV"
+              },
+              download_csv: {
+                hint: "Scarica feature in CSV"
+              },
+              download_features_xls: {
+                hint: "Scarica features in XLS"
+              },
+              download_xls: {
+                hint: "Scarica la feature in XLS"
               }
             }
           },
           querybypolygon: {
             tooltip: 'Interroga per poligono',
-            help: `<h4>Guida - Inrerrogazione con Poligono</h4>
+            help: `<h4>Guida - Interrogazione con Poligono</h4>
                   <ul style="padding-left: 10px;">
                     <li style="font-size:0.8em;">Seleziona uno strato poligonale in legenda.</li>
                     <li style="font-size:0.8em;">Assicurati che lo strato sia visibile in mappa.</li>
@@ -145,7 +171,7 @@ const translations = {
           querybybbox: {
             tooltip: 'Interroga per BBOX',
             nolayers_visible: "Nessun layer interrogabile è visibile. Assicurarsi che almeno un layer wfs sia visibile per eseguire l'interrogazione",
-            help: `<h4>Guida - Inrerrogazione BBox</h4>
+            help: `<h4>Guida - Interrogazione BBox</h4>
                    <ul style="padding-left: 10px;">
                     <li style="font-size:0.8em;">Disegna un rettangolo per interrogare gli strati evidenziati in giallo</li>
                    </ul>`
@@ -159,11 +185,11 @@ const translations = {
           measures: {
             length: {
               tooltip: "Lunghezza",
-              help: "Clicca sulla mappa per continuare a disegnare la linea.<br>CANC se si vuole cancellare l\'ultimo vertice inserito",
+              help: "Clicca sulla mappa per continuare a disegnare la linea.<br>CANC se si vuole cancellare l'ultimo vertice inserito",
             },
             area: {
               tooltip: "Area",
-              help: "Click per continuare a disegnare il poligono.<br>CANC se si vuole cancellare l'ultimo vertice inserito"
+              help: "Clicca per continuare a disegnare il poligono.<br>CANC se si vuole cancellare l'ultimo vertice inserito"
             }
           }
         },
@@ -218,6 +244,12 @@ const translations = {
               title:"",
               copy: "Clicca qui per copiare url",
               copied: "Copiato"
+            },
+            download: {
+              shp: 'Scarica Shapefile',
+              gpx: 'Scarica GPX',
+              csv: 'Scarica CSV',
+              xls: 'Scarica XLS'
             }
           }
         },
@@ -335,6 +367,12 @@ const translations = {
           rotation: "Rotation"
         },
         querybuilder: {
+          search: {
+            run: "Run",
+            info: "Information",
+            delete: "Delete",
+            edit: "Edit"
+          },
           messages: {
             changed: 'Saved'
           },
@@ -429,29 +467,48 @@ const translations = {
             form_to_row: "Row View",
             row_to_form: "Form View"
           },
-          zoom_to_features_extent: "Zoom to features extent",
           copy_map_extent_url: 'Copy map view link',
-          download_xls: "Download XLS",
+          download_shapefile: "Download Shapefile",
+          download_gpx: "Download GPX",
           download_csv: "Download CSV",
+          download_xls: "Download XLS",
         },
         mapcontrols: {
           query: {
             tooltip: 'Query layer',
             actions: {
-              show_map: {
-                hint: "Show on map"
+              zoom_to_features_extent:{
+                hint: "Zoom to features extent"
+              },
+              zoom_to_feature: {
+                hint: "Zoom to feature"
               },
               relations: {
                 hint: "Show Relations"
               },
-              download_shapefile: {
-                hint: 'Download Shapefile'
+              download_features_shapefile:{
+                hint: 'Download features Shapefile'
               },
-              download_xls: {
-                hint: "Download XLS"
+              download_shapefile: {
+                hint: 'Download feature Shapefile'
+              },
+              download_features_gpx: {
+                hint: "Download feature GPX"
               },
               download_gpx: {
-                hint: "Download GPX"
+                hint: "Download feature GPX"
+              },
+              download_features_csv: {
+                hint: "Download features CSV"
+              },
+              download_csv: {
+                hint: "Download feature CSV"
+              },
+              download_features_xls: {
+                hint: "Download features XLS"
+              },
+              download_xls: {
+                hint: "Download feature XLS"
               }
             }
           },
@@ -540,6 +597,12 @@ const translations = {
               title:"",
               copy: "Click here to copy url",
               copied: "Copied"
+            },
+            download: {
+              shp: 'Download Shapefile',
+              gpx: 'Download GPX',
+              csv: 'Download CSV',
+              xls: 'Download XLS'
             }
           }
         },
