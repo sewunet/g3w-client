@@ -30,6 +30,7 @@ const _Viewer = function(opts={}) {
     options.target = opts.id;
   }
   Projections.setApplicationProjections();
+  Projections.registerProjections();
   const map  = new ol.Map(options);
   this.map = map;
 };

@@ -14,6 +14,9 @@ const Projections = {
     ADDEDPROJECTIONS.push(crs);
     return projection;
   },
+  registerProjections(){
+    ol.proj.proj4.register(proj4)
+  },
   setApplicationProjections() {
     Projections.get({
       epsg: "EPSG:3045",
